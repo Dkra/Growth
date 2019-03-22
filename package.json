@@ -1,0 +1,15 @@
+{
+	"name": "Endless-Growth",
+	"version": "0.0.1",
+	"description": "Growth",
+	"main": "index.js",
+	"repository": "https://github.com/Dkra/Endless-Growth.git",
+	"author": "Roger",
+	"license": "MIT",
+	"scripts": {
+		"test": "jest"
+	},
+	"dependencies": {
+		"jest": "^24.5.0"
+	}
+}
