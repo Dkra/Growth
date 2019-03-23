@@ -96,12 +96,6 @@ class LinkedList {
 	}
 
 	/**
-	 * Reverse a linked list.
-	 * @returns {LinkedList}
-	 */
-	reverse() {}
-
-	/**
 	 * @param {*[]} values - Array of values that need to be converted to linked list.
 	 * @return {LinkedList}
 	 */
