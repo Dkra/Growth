@@ -7,8 +7,7 @@
 	"author": "Roger",
 	"license": "MIT",
 	"scripts": {
-		"test": "jest",
-		"test-watch": "jest --watch --collectCoverage"
+		"test": "jest --collectCoverage"
 	},
 	"dependencies": {
 		"jest": "^24.5.0"
