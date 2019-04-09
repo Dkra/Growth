@@ -1,3 +1,10 @@
+/*
+ * HashTable
+ *           Accessing    Searching    Inserting    Deleting
+ * -------------------------------------------------------------------------
+ *           O(N/A)         O(n)         O(n)         O(n)
+ */
+
 class HashTable {
 	constructor() {
 		this.memory = []
