@@ -3,11 +3,11 @@ const { mergeSort, merge } = require('../mergeSort')
 test('merge function should reorder the array', () => {
 	// merge function should be loop invariant
 	// left part and right part should be ORDERED beforehand
-	expect(merge([1, 2, -1, -2], 0, 1, 3)).toEqual([-1, -2, 1, 2])
+	expect(merge([1, 2, -2, -1], 0, 1, 3)).toEqual([-2, -1, 1, 2])
 	expect(merge([1, 2, 0], 0, 1, 2)).toEqual([0, 1, 2])
 })
 
-test('should sort two array in ascending order', () => {
+test.only('should sort two array in ascending order', () => {
 	expect(mergeSort([3, 2, 1], 0, 2)).toEqual([1, 2, 3])
 
 	expect(mergeSort([3, 2, 1], 0, 2)).toEqual([1, 2, 3])

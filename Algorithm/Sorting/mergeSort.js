@@ -8,45 +8,38 @@
 
 const mergeSort = (arr, head, tail) => {
 	if (head < tail) {
-		const mid = Math.floor((tail + head) / 2)
+		const mid = Math.floor((head + tail) / 2)
 		mergeSort(arr, head, mid)
 		mergeSort(arr, mid + 1, tail)
 		merge(arr, head, mid, tail)
 	}
-
 	return arr
 }
 
 function merge(arr, head, mid, tail) {
-	const arrLeft = arr.slice(head, mid + 1)
-	const arrRight = arr.slice(mid + 1, tail + 1)
+	const cloneLeft = arr.slice(head, mid + 1) // slice from head to mid element
+	const cloneRight = arr.slice(mid + 1, tail + 1) // slice from mid+1 to tail
+	let lPointer = 0
+	let rPointer = 0
 
-	let leftPointer = (rightPointer = 0)
-
-	for (let i = 0; i < tail - head + 1; i++) {
-		// leftArr exhausted (insert rightArr value)
-		if (leftPointer === arrLeft.length) {
-			arr[head + i] = arrRight[rightPointer]
-			rightPointer++
-
-			// rightArr exhausted (insert leftArr value)
-		} else if (rightPointer === arrRight.length) {
-			arr[head + i] = arrLeft[leftPointer]
-			leftPointer++
-
-			// leftNumber <= rightNumber
-		} else if (arrLeft[leftPointer] <= arrRight[rightPointer]) {
-			arr[head + i] = arrLeft[leftPointer]
-			leftPointer++
-
-			// leftNumber > rightNumber
+	// Iterate from [head] slots to [tail] slots
+	for (let i = head; i <= tail; i++) {
+		if (lPointer === cloneLeft.length) {
+			arr[i] = cloneRight[rPointer]
+			rPointer++
+		} else if (rPointer === cloneRight.length) {
+			arr[i] = cloneLeft[lPointer]
+			lPointer++
+		} else if (cloneLeft[lPointer] <= cloneRight[rPointer]) {
+			arr[i] = cloneLeft[lPointer]
+			lPointer++
 		} else {
-			arr[head + i] = arrRight[rightPointer]
-			rightPointer++
+			arr[i] = cloneRight[rPointer]
+			rPointer++
 		}
 	}
-
-	return arr
+	const reorderArr = arr.slice(head, tail + 1)
+	return reorderArr
 }
 
 module.exports = {
