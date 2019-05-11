@@ -7,6 +7,7 @@
  */
 
 const bfMaximumSubarray = arr => {
+	if (arr.length === 0) return []
 	let maxSubArr = []
 	let headIdx
 	let tailIdx
