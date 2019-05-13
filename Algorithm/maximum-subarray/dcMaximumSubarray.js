@@ -6,42 +6,44 @@
  * @return {Number[]}
  */
 
-const findMaxCrossArr = (arr, head, mid, tail) => {
+const findMaxCrossArr = (arr, low, mid, high) => {
 	let leftMaxSum = Number.NEGATIVE_INFINITY
 	let rightMaxSum = Number.NEGATIVE_INFINITY
-	let maxLeftIdx = null
-	let maxRightIdx = null
+	let lowIdx = 0
+	let highIdx = 0
 	let accumulator = 0
-	for (let i = mid; i >= head; i--) {
+
+	for (let i = mid; i >= low; i--) {
 		accumulator += arr[i]
 		if (accumulator >= leftMaxSum) {
 			leftMaxSum = accumulator
-			maxLeftIdx = i
+			lowIdx = i
 		}
 	}
 
 	accumulator = 0
-	for (let i = mid + 1; i <= tail; i++) {
+	for (let i = mid + 1; i <= high; i++) {
 		accumulator += arr[i]
 		if (accumulator >= rightMaxSum) {
 			rightMaxSum = accumulator
-			maxRightIdx = i
+			highIdx = i
 		}
 	}
 
 	return {
-		low: maxLeftIdx,
-		high: maxRightIdx,
+		low: lowIdx,
+		high: highIdx,
 		maxSum: leftMaxSum + rightMaxSum
 	}
 }
 
 const dcMaximumSubarray = (arr, low = 0, high = arr.length - 1) => {
 	if (arr.length === 0) return []
+
 	if (low === high) {
 		return {
-			low,
-			high,
+			low: low,
+			high: high,
 			maxSum: arr[low]
 		}
 	} else {
@@ -50,26 +52,19 @@ const dcMaximumSubarray = (arr, low = 0, high = arr.length - 1) => {
 		const rightObj = dcMaximumSubarray(arr, mid + 1, high)
 		const crossObj = findMaxCrossArr(arr, low, mid, high)
 
-		let maxObj
-		if (
-			crossObj.maxSum >= rightObj.maxSum &&
-			crossObj.maxSum >= leftObj.maxSum
-		) {
-			maxObj = crossObj
-		} else if (
-			rightObj.maxSum >= leftObj.maxSum &&
-			rightObj.maxSum >= crossObj.maxSum
-		) {
-			maxObj = rightObj
+		let maxSumObj
+
+		if (crossObj.maxSum >= rightObj.maxSum && crossObj.maxSum >= leftObj.maxSum) {
+			maxSumObj = crossObj
+		} else if (rightObj.maxSum >= leftObj.maxSum && rightObj.maxSum >= crossObj.maxSum) {
+			maxSumObj = rightObj
 		} else {
-			maxObj = leftObj
+			maxSumObj = leftObj
 		}
+
 		return {
-			low: maxObj.low,
-			high: maxObj.high,
-			maxSum: maxObj.maxSum
+			...maxSumObj
 		}
 	}
 }
-
 module.exports = dcMaximumSubarray
