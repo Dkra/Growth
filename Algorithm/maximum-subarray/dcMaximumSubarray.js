@@ -6,70 +6,65 @@
  * @return {Number[]}
  */
 
-const findMaxCrossArr = (arr, head, mid, tail) => {
-	let leftMaxSum = Number.NEGATIVE_INFINITY
-	let rightMaxSum = Number.NEGATIVE_INFINITY
-	let maxLeftIdx = null
-	let maxRightIdx = null
-	let accumulator = 0
-	for (let i = mid; i >= head; i--) {
-		accumulator += arr[i]
-		if (accumulator >= leftMaxSum) {
-			leftMaxSum = accumulator
-			maxLeftIdx = i
-		}
-	}
+const findMaxCrossArr = (arr, low, mid, high) => {
+  let leftMaxSum = Number.NEGATIVE_INFINITY
+  let rightMaxSum = Number.NEGATIVE_INFINITY
+  let lowIdx = 0
+  let highIdx = 0
+  let accumulator = 0
 
-	accumulator = 0
-	for (let i = mid + 1; i <= tail; i++) {
-		accumulator += arr[i]
-		if (accumulator >= rightMaxSum) {
-			rightMaxSum = accumulator
-			maxRightIdx = i
-		}
-	}
+  for (let i = mid; i >= low; i--) {
+    accumulator += arr[i]
+    if (accumulator >= leftMaxSum) {
+      leftMaxSum = accumulator
+      lowIdx = i
+    }
+  }
 
-	return {
-		low: maxLeftIdx,
-		high: maxRightIdx,
-		maxSum: leftMaxSum + rightMaxSum
-	}
+  accumulator = 0
+  for (let i = mid + 1; i <= high; i++) {
+    accumulator += arr[i]
+    if (accumulator >= rightMaxSum) {
+      rightMaxSum = accumulator
+      highIdx = i
+    }
+  }
+
+  return {
+    low: lowIdx,
+    high: highIdx,
+    maxSum: leftMaxSum + rightMaxSum
+  }
 }
 
 const dcMaximumSubarray = (arr, low = 0, high = arr.length - 1) => {
-	if (arr.length === 0) return []
-	if (low === high) {
-		return {
-			low,
-			high,
-			maxSum: arr[low]
-		}
-	} else {
-		const mid = Math.floor((low + high) / 2)
-		const leftObj = dcMaximumSubarray(arr, low, mid)
-		const rightObj = dcMaximumSubarray(arr, mid + 1, high)
-		const crossObj = findMaxCrossArr(arr, low, mid, high)
+  if (arr.length === 0) return []
 
-		let maxObj
-		if (
-			crossObj.maxSum >= rightObj.maxSum &&
-			crossObj.maxSum >= leftObj.maxSum
-		) {
-			maxObj = crossObj
-		} else if (
-			rightObj.maxSum >= leftObj.maxSum &&
-			rightObj.maxSum >= crossObj.maxSum
-		) {
-			maxObj = rightObj
-		} else {
-			maxObj = leftObj
-		}
-		return {
-			low: maxObj.low,
-			high: maxObj.high,
-			maxSum: maxObj.maxSum
-		}
-	}
+  if (low === high) {
+    return {
+      low,
+      high,
+      maxSum: arr[low]
+    }
+  }
+
+  const mid = Math.floor((low + high) / 2)
+  const leftObj = dcMaximumSubarray(arr, low, mid)
+  const rightObj = dcMaximumSubarray(arr, mid + 1, high)
+  const crossObj = findMaxCrossArr(arr, low, mid, high)
+
+  let maxSumObj
+
+  if (crossObj.maxSum >= rightObj.maxSum && crossObj.maxSum >= leftObj.maxSum) {
+    maxSumObj = crossObj
+  } else if (rightObj.maxSum >= leftObj.maxSum && rightObj.maxSum >= crossObj.maxSum) {
+    maxSumObj = rightObj
+  } else {
+    maxSumObj = leftObj
+  }
+
+  return {
+    ...maxSumObj
+  }
 }
-
 module.exports = dcMaximumSubarray
