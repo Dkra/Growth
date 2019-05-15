@@ -7,18 +7,18 @@
  */
 
 const insertSort = arr => {
-	let key, q, i
-	for (q = 1; q < arr.length; q++) {
-		key = arr[q]
-		i = q - 1
-		while (i >= 0 && arr[i] > key) {
-			arr[i + 1] = arr[i]
-			i--
-		}
-		arr[i + 1] = key
-	}
+  let key, q, i
+  for (q = 1; q < arr.length; q++) {
+    key = arr[q]
+    i = q - 1
+    while (i >= 0 && arr[i] > key) {
+      arr[i + 1] = arr[i]
+      i--
+    }
+    arr[i + 1] = key
+  }
 
-	return arr
+  return arr
 }
 
 module.exports = insertSort

@@ -6,25 +6,42 @@
  * 																									because of using array
  */
 
-class Queue {
-  constructor() {
+class QueueCircular {
+  constructor(size) {
     this.list = []
-    this.length = 0
+    this.size = size
+  }
+
+  /**
+   * @return {boolean}
+   */
+  isFull() {
+    return this.list.length === this.size
   }
 
   /**
    * @return {boolean}
    */
   isEmpty() {
-    return this.length === 0
+    return this.list.length === 0
   }
 
   /**
-   * Read the element at the front of the queue without removing it.
-   * @return {*}
+   * Get the front item from the queue.
+   * @return {number}
    */
-  peek() {
+  Front() {
+    if (this.isEmpty()) return -1
     return this.list[0]
+  }
+
+  /**
+   * Get the last item from the queue.
+   * @return {number}
+   */
+  Rear() {
+    if (this.isEmpty()) return -1
+    return this.list[this.list.length - 1]
   }
 
   /**
@@ -32,9 +49,10 @@ class Queue {
    * This element will be processed after all elements ahead of it.
    * @param {*} value
    */
-  enqueue(value) {
+  enQueue(value) {
+    if (this.isFull()) return false
     this.list.push(value)
-    this.length++
+    return true
   }
 
   /**
@@ -42,12 +60,11 @@ class Queue {
    * If the queue is empty, return null.
    * @return {*}
    */
-  dequeue() {
-    if (this.list.length === 0) return null
-
-    this.length--
-    return this.list.shift()
+  deQueue() {
+    if (this.isEmpty()) return false
+    this.list.shift()
+    return true
   }
 }
 
-module.exports = Queue
+module.exports = QueueCircular
