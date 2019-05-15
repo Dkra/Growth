@@ -18,12 +18,12 @@ const swapNodeInPairs = listNode => {
   if (listNode.next === null) return listNode
 
   // swap
-  const swapList = listNode.next
+  const newHead = listNode.next
   // eslint-disable-next-line no-param-reassign
   listNode.next = swapNodeInPairs(listNode.next.next)
-  swapList.next = listNode
+  newHead.next = listNode
 
-  return swapList
+  return newHead
 }
 
 module.exports = {
