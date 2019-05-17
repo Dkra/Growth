@@ -17,6 +17,8 @@ const findCelebrity = graph => {
     /*** Code From Here ***/
     let candidate = 0
 
+    // if there's a celebrity exist, everybody should know him
+    // so if candidate knows j, j become the new candidate
     for (let j = 1; j < n; j++) {
       if (knows(candidate, j)) candidate = j
     }
