@@ -1,26 +1,26 @@
 {
-	"name": "Endless-Growth",
-	"version": "0.0.1",
-	"description": "Growth",
-	"main": "index.js",
-	"repository": "https://github.com/Dkra/Endless-Growth.git",
-	"author": "Roger",
-	"license": "MIT",
-	"scripts": {
-		"test": "jest --collectCoverage"
-	},
-	"dependencies": {
-		"eslint-plugin-jest": "^22.5.1",
-		"jest": "^24.5.0"
-	},
-	"devDependencies": {
-		"eslint": "^5.3.0",
-		"eslint-config-airbnb": "^17.1.0",
-		"eslint-config-prettier": "^4.2.0",
-		"eslint-plugin-import": "^2.17.2",
-		"eslint-plugin-jsx-a11y": "^6.2.1",
-		"eslint-plugin-prettier": "^3.1.0",
-		"eslint-plugin-react": "^7.13.0",
-		"prettier": "^1.17.1"
-	}
+  "name": "Growth",
+  "version": "0.0.1",
+  "description": "Growth",
+  "main": "index.js",
+  "repository": "https://github.com/Dkra/Endless-Growth.git",
+  "author": "Roger",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --collectCoverage"
+  },
+  "dependencies": {
+    "eslint-plugin-jest": "^22.5.1",
+    "jest": "^24.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "prettier": "^1.17.1"
+  }
 }
