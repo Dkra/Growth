@@ -3,8 +3,14 @@
  */
 
 /**
- * Runtime: 76 ms, faster than 99.54% of JavaScript online submissions for Find the Celebrity.
- * Memory Usage: 37.3 MB, less than 80.70% of JavaScript online submissions for Find the Celebrity.
+ * Reflect: Every char set cost space used, should be impoved.
+ * Runtime: 64 ms, faster than 94.51% of JavaScript online submissions for Bulls and Cows.
+ * Memory Usage: 37.9 MB, less than 14.46% of JavaScript online submissions for Bulls and Cows.
+ */
+
+/**
+ * Time complexity: O(N)
+ * Space complexity: O(N)
  */
 
 /**
@@ -13,39 +19,27 @@
  * @return {string}
  */
 const getHint = (secret, guess) => {
-  if (secret.length == 0) {
-    return "0A0B"
+  let numA = 0,
+    numB = 0
+  for (let i = 0; i < secret.length; i++) {
+    if (guess[i] === secret[i]) {
+      secret = setCharAt(secret, "A", i)
+      numA++
+    }
   }
-
-  let bulls = 0
-  let cows = 0
-  let numbers = new Array(10).fill(0)
 
   for (let i = 0; i < secret.length; i++) {
-    let s = parseInt(secret[i])
-    let g = parseInt(guess[i])
-
-    if (s == g) {
-      bulls++
-    } else {
-      if (numbers[s] < 0) {
-        cows++
-      }
-
-      if (numbers[g] > 0) {
-        cows++
-      }
-
-      numbers[s]++
-      numbers[g]--
+    const bIdx = secret.indexOf(guess[i])
+    if (secret[i] !== "A" && bIdx !== -1) {
+      secret = setCharAt(secret, "B", bIdx)
+      numB++
     }
-    console.log("i", i)
-    console.log(numbers)
-    console.log("-----------------------")
-    continue
   }
 
-  return `${bulls}A${cows}B`
+  function setCharAt(str, char, idx) {
+    return `${str.substring(0, idx)}${char}${str.substring(idx + 1)}`
+  }
+  return `${numA}A${numB}B`
 }
 
 module.exports = getHint

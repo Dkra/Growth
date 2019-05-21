@@ -2,7 +2,7 @@
 // https://leetcode.com/submissions/detail/229943982/
 
 /**
- * Solutions A: Each time Rotate One Spot, k tims
+ * Solutions A: Having a size 10 array to keep tracking nums
  * Time complexity: O(N)
  * Space complexity: O(1)
  */
@@ -28,16 +28,29 @@ var getHint = function(secret, guess) {
     if (s == g) {
       bulls++
     } else {
+      /*
+       Situation: when someone guess this digit in the past
+       e.g number[s] = -2, someone guessed this digit at least twice!
+      */
+      // when the current secret number[s] found is less than 0, which means
+      // someone GUESS this digit before due to => numbers[g]--
+      // and now the secret number[s] show's up, its a bull
       if (numbers[s] < 0) {
         cows++
       }
 
+      /*
+        Situation: when secret digit show's up in the past
+        e.g number[g] = 2, digit has appears in number[s] at least twice!
+      */
+      // For current guess position which is number[g],
+      // which meas there's has secret digit show's up before due to => numbers[s]++
       if (numbers[g] > 0) {
         cows++
       }
 
       numbers[s]++
-      numbers[g]--
+      numbers[g]-- //
     }
   }
 
