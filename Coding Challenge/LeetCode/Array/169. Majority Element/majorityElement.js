@@ -3,15 +3,21 @@
  */
 
 /**
- * Reflection: Check solution same concept but simpler code
+ * Reflection: Time complexity could impove from O(n) to O(1)
  * Runtime: 60 ms, faster than 97.47% of JavaScript online submissions for Majority Element.
  * Memory Usage: 37.4 MB, less than 64.45% of JavaScript online submissions for Majority Element.
+ */
+
+/*
+ * Time complexity: O(N)
+ * Space complexity: O(N)
  */
 
 /**
  * @param {number[]} nums
  * @return {number}
  */
+
 const majorityElement = nums => {
   if (nums.length === 1) return nums[0]
   const majorityCriteria = Math.floor(nums.length / 2) + 1
