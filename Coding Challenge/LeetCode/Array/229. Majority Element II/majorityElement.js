@@ -3,7 +3,7 @@
  */
 
 /**
- * Reflection: Memory Usage is a bit lot, but still in constant time
+ * Reflection: Memory Usage is a bit slow, but still in constant time
  * Runtime: 56 ms, faster than 98.65% of JavaScript online submissions for Majority Element II.
  * Memory Usage: 38.8 MB, less than 6.50% of JavaScript online submissions for Majority Element II.
  */
