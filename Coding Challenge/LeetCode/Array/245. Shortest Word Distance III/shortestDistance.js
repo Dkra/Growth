@@ -8,8 +8,7 @@
  */
 
 /** Reflection:
- * For the same word, just keep two pointer remains big.
- * Keep p1, p2 close to the current index i
+ * For the same word, Keep p1, p2 close to the current index i
  * Time complexity: O(N)
  * Space complexity: O(1)
  */
@@ -21,7 +20,8 @@ const shortestDistance = (words, word1, word2) => {
   for (let i = 0; i < words.length; i++) {
     if (words[i] === word1 || words[i] === word2) {
       if (word1 === word2) {
-        // if p1 index bigger than p2 index, p2 need to update
+        // if p1 index bigger than p2 index,
+        // means p2 is far from index i, so update p2 = i
         if (p1 > p2) p2 = i
         else p1 = i
       } else {
