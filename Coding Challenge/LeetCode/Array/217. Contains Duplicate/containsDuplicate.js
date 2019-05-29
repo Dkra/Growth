@@ -8,7 +8,8 @@
  */
 
 /**
- * Reflection: with HeapSort pre-process, space complexity can be O(1)
+ * Reflection: Go with HeapSort pre-process, space complexity can be O(1)
+ * Hash Map solution
  * Time complexity: O(N)
  * Space complexity: O(N)
  */

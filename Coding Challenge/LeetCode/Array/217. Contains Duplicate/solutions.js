@@ -1,8 +1,15 @@
 /* eslint-disable */
 // https://leetcode.com/submissions/detail/229943982/
 
-/**
- * Solutions A: Each time Rotate One Spot, k tims
- * Time complexity: O(N)
- * Space complexity: O(1)
+/*
+  Approach #2 (Sorting First)
+  https://leetcode.com/problems/contains-duplicate/solution/
  */
+
+const containsDuplicate = nums => {
+  nums.sort((a, b) => a - b)
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] === nums[i + 1]) return true
+  }
+  return false
+}
