@@ -1,2 +1,2 @@
 /* eslint-disable */
-// https://leetcode.com/submissions/detail/229943982/
+// https://leetcode.com/problems/jump-game-ii/discuss/?currentPage=1&orderBy=most_votes&query=
