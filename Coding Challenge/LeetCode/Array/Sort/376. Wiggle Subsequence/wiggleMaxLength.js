@@ -9,6 +9,8 @@
 
 /**
  * Approach:
+ * - use two pointer: up, down
+ * - only increase the value when diff (num[i]- nums[i-1]) change direction
  * Time complexity: O(N)
  * Space complexity: O(1)
  */
@@ -25,4 +27,5 @@ const wiggleMaxLength = nums => {
   }
   return Math.max(down, up)
 }
+
 module.exports = wiggleMaxLength
