@@ -3,6 +3,20 @@
 */
 
 /**
+ * Runtime: 84 ms, faster than 51.21% of JavaScript online submissions for Remove Duplicates from Sorted Array.
+ * Memory Usage: 36.6 MB, less than 99.53% of JavaScript online submissions for Remove Duplicates from Sorted Array.
+ */
+
+/**
+ * Approach: double pointer: i, j
+ * i: last set value position
+ * j: traverse from 1 to end of array
+ * nums[i] !== nums[j], i++ then set j's value to nums[i]
+ * Time complexity: O(N)
+ * Space complexity: O(1)
+ */
+
+/**
  * @param {number[]} nums
  * @return {number}
  */
@@ -18,12 +32,5 @@ const removeDuplicates = nums => {
   // return i + 1
   return nums.slice(0, i + 1) // for test
 }
-
-/**
- * - double pointer: i, j
- * i: last set value position
- * j: traverse from 1 to end of array
- * nums[i] !== nums[j], i++ then set j's value to nums[i]
- */
 
 module.exports = removeDuplicates
