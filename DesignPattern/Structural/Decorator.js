@@ -22,14 +22,13 @@ class BaseCoffee {
 
 // Abstract Decorator Class
 class CoffeeMaterialDecorator {
-    constructor(component, price, material) {
+    constructor(component, material) {
         this.component = component
-        this.price = price
         this.material = material
     }
 
     getPrice() {
-        return this.component.getPrice() + this.price
+        return this.component.getPrice() + this.materialPrice
     }
 
     getMaterial() {
@@ -41,28 +40,37 @@ class CoffeeMaterialDecorator {
 class MilkDecorator extends CoffeeMaterialDecorator {
     constructor(component) {
         // use parent class constructor
-        super(component, 7, 'Milk')
+        super(component, 'Milk')
+    }
+
+    addMilk() {
+        this.materialPrice = 7
+        console.log(`${this.material} price ${this.materialPrice} added!`)
     }
 
     getPrice() {
-        console.log('Milk Price: 7')
+        this.addMilk()
         return super.getPrice()
     }
 
     getMaterial() {
-        console.log('Milk Added!')
+        this.addMilk()
         return super.getMaterial()
-
     }
 }
 
 class WaterDecorator extends CoffeeMaterialDecorator {
     constructor(component) {
-        super(component, 1, 'Water')
+        super(component, 'Water')
+    }
+
+    addWater() {
+        this.materialPrice = 1
+        console.log(`${this.material} price ${this.materialPrice} added!`)
     }
 
     getPrice() {
-        console.log('Water Price: 1')
+        this.addWater()
         return super.getPrice()
     }
 
