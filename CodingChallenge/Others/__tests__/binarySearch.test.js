@@ -28,7 +28,11 @@ describe("Binary Search Test Example", () => {
     }
 
     // Run N Times (because of random value)
-    const times = 30
+    // *Important: P( (9/10)^50 * 10number ) not tested on a certain num
+    // Approximate: 5%
+    const times = 50
     for (i = 0; i < times; i++) runCriteriaOnce()
+
+    // Edge Cases will be missing first or last element
   })
 })
