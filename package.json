@@ -7,13 +7,22 @@
   "author": "Roger",
   "license": "MIT",
   "scripts": {
-    "test": "jest --collectCoverage"
+    "test": "jest --collectCoverage",
+    "lint": "eslint *.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm lint"
+    }
   },
   "dependencies": {
     "eslint-plugin-jest": "^22.5.1",
     "jest": "^24.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.9.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.2.0",

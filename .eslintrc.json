@@ -1,21 +1,13 @@
-// {
-//   "env": {
-//     "jest/globals": true
-//   },
-//   "extends": ["airbnb", "prettier", "plugin:jest/recommended"],
-//   "plugins": ["prettier", "jest"],
-//   "rules": {
-//     "prettier/prettier": ["error"]
-//   }
-// }
 {
     "plugins": [
         "jest"
     ],
+    "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 2017
+        "ecmaVersion": 2019,
+        "sourceType": "module"
     },
     "env": {
-        "es6": true
+        "jest": true,
     }
 }
