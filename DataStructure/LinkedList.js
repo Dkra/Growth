@@ -96,12 +96,6 @@ class LinkedList {
   }
 
   /**
-   * @param {*[]} values - Array of values that need to be converted to linked list.
-   * @return {LinkedList}
-   */
-  fromArray(values) {}
-
-  /**
    * @return {LinkedListNode[]}
    */
   toArray() {
@@ -143,4 +137,4 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList
+export default LinkedList

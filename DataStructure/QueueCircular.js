@@ -67,4 +67,4 @@ class QueueCircular {
   }
 }
 
-module.exports = QueueCircular
+export default QueueCircular

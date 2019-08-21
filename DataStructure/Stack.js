@@ -49,4 +49,4 @@ class Stack {
 	toArray() {}
 }
 
-module.exports = Stack
+export default Stack
