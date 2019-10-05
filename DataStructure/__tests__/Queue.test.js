@@ -1,21 +1,20 @@
-const Queue = require("../Queue")
-
+import Queue from '../Queue'
 let queue = new Queue()
 
 beforeEach(() => {
   queue = new Queue()
 })
 
-test("isEmpty", () => {
+test('isEmpty', () => {
   expect(queue.dequeue()).toBe(null)
   expect(queue.isEmpty()).toBe(true)
-  queue.enqueue("a")
+  queue.enqueue('a')
   expect(queue.isEmpty()).toBe(false)
 })
 
-test("enqueue, peek, dequeue", () => {
-  const value1 = "a"
-  const value2 = "b"
+test('enqueue, peek, dequeue', () => {
+  const value1 = 'a'
+  const value2 = 'b'
 
   queue.enqueue(value1)
   queue.enqueue(value2)

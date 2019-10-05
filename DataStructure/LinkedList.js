@@ -78,7 +78,7 @@ class LinkedList {
   delete(value) {
     if (this.head === null) return null
 
-    const firstMockValue = "---FirstMockValue---"
+    const firstMockValue = '---FirstMockValue---'
     this.prepend(firstMockValue)
 
     let prevNode = this.head
