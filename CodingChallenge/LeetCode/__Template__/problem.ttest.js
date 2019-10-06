@@ -1,6 +1,6 @@
-const template = require("./template")
+import template from './template'
 
-test("problem", () => {
+test('problem', () => {
   expect(template()).toEqual()
 
   // Edge Cases
