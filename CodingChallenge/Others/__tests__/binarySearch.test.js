@@ -1,9 +1,9 @@
-const {
+import {
   genArrOneToTen,
   omitRandomNumber,
   omitedOneNumberFromArr,
   findOmitedNum
-} = require("../binarySearch")
+} from "../binarySearch"
 
 describe("Binary Search Test Example", () => {
   it("should return a 1 to 10 array", () => {
@@ -28,10 +28,10 @@ describe("Binary Search Test Example", () => {
     }
 
     // Run N Times (because of random value)
-    // *Important: P( (9/10)^50 * 10number ) not tested on a certain num
+    // * P( (9/10)^50 * 10number ) not tested on a certain num
     // Approximate: 5%
     const times = 50
-    for (i = 0; i < times; i++) runCriteriaOnce()
+    for (let i = 0; i < times; i++) runCriteriaOnce()
 
     // Edge Cases will be missing first or last element
   })

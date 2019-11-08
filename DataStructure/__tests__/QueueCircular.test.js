@@ -1,8 +1,8 @@
-const QueueCircular = require("../QueueCircular")
+import QueueCircular from '../QueueCircular'
 
 const queueCircular = new QueueCircular(3)
 
-test("queue operations", () => {
+test('queue operations', () => {
   expect(queueCircular.deQueue()).toEqual(false)
   expect(queueCircular.Rear()).toEqual(-1)
   expect(queueCircular.Front()).toEqual(-1)

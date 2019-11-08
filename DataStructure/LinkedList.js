@@ -78,7 +78,7 @@ class LinkedList {
   delete(value) {
     if (this.head === null) return null
 
-    const firstMockValue = "---FirstMockValue---"
+    const firstMockValue = '---FirstMockValue---'
     this.prepend(firstMockValue)
 
     let prevNode = this.head
@@ -94,12 +94,6 @@ class LinkedList {
 
     return this.head
   }
-
-  /**
-   * @param {*[]} values - Array of values that need to be converted to linked list.
-   * @return {LinkedList}
-   */
-  fromArray(values) {}
 
   /**
    * @return {LinkedListNode[]}
@@ -143,4 +137,4 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList
+export default LinkedList

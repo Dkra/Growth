@@ -13,4 +13,4 @@
  * Space complexity: O()
  */
 
-module.exports = 
+export default  
