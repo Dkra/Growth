@@ -1,4 +1,4 @@
 // jest.config.js
 module.exports = {
-  testPathIgnorePatterns: ['/Labs']
+  testPathIgnorePatterns: ['/Lab']
 }
