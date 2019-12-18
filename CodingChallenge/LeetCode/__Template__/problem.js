@@ -1,8 +1,4 @@
 /**
- * https://leetcode.com/problems/find-the-celebrity/
- */
-
-/**
  * Runtime:
  * Memory Usage:
  */
