@@ -1,4 +1,4 @@
-import solutions from './binary_search'
+import solutions from './problem'
 test('problem', () => {
   const sortedArr = [
     10,
