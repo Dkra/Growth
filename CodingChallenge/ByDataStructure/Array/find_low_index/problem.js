@@ -1,5 +1,5 @@
 /**
- * Approach: Binary search, return last low position
+ * Approach: Binary search, return last low position if is equals to key
  * Time complexity: O(logN)
  * Space complexity: O(1)
  */
