@@ -1,5 +1,5 @@
 /**
- * Approach:
+ * Approach: read/write pointer from right to left
  * Time complexity: O(N)
  * Space complexity: O(1)
  */
@@ -16,6 +16,7 @@ let move_zeros_to_left = function(arr) {
     read--
   }
 
+  // since we already read & written all non-0, then we can fill the rest as 0
   while (write >= 0) {
     arr[write] = 0
     write--
