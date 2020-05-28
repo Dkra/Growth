@@ -8,8 +8,6 @@ test('all solutions should be tested', () => {
 
     expect(s([-3, -1, 1, 5, 7, 16], [-1, 0, 4, 5, 7, 16, 50], [-8, -6, 7, 10, 16, 25])).toEqual(7)
 
-    // expect(s()).toEqual()
-
     // Edge Cases
     expect(s([], [1], [])).toEqual(-1) // no common number
   })
