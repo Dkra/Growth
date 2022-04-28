@@ -7,6 +7,7 @@
   "author": "Roger",
   "license": "MIT",
   "scripts": {
+    "start": "jest --watch",
     "test": "jest --collectCoverage",
     "lint": "eslint --fix ./**/*.js"
   },
