@@ -1,13 +1,11 @@
 {
-    "plugins": [
-        "jest"
-    ],
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": 2019,
-        "sourceType": "module"
-    },
-    "env": {
-        "jest": true
-    }
+  "plugins": ["jest"],
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "env": {
+    "jest": true
+  }
 }
