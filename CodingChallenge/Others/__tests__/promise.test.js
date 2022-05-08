@@ -107,3 +107,5 @@ test('sequence should be call A then B', done => {
 
   fn('A') // execute this first (sync code)
 })
+
+test('should chain', () => {})

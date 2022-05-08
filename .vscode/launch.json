@@ -9,10 +9,12 @@
       "request": "launch",
       "name": "Jest All",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["--runInBand", "--watch" /*, "--collectCoverage"*/],
+      "args": ["--runInBand", "--watch", "--detectOpenHandles" /*, "--collectCoverage"*/],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true
+      "disableOptimisticBPs": true,
+      // change along with node current version
+      "runtimeExecutable": "/Users/roger/.nvm/versions/node/v17.8.0/bin/node"
     }
   ]
 }
