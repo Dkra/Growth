@@ -51,14 +51,29 @@ describe('myAll()', () => {
   })
 
   test('only return first failed with reason', async () => {
-    const promiseB = new Promise((res, rej) => rej(new Error('B failed!!!'))).catch(err => err)
     // Should not return second failed
-    const promiseA = new Promise((res, rej) => rej(new Error('A failed!!!'))).catch(err => err)
+    const promiseB = new Promise((res, rej) => {
+      setTimeout(() => rej(new Error('B failed!!!')), 2000)
+    }).catch(err => err)
 
-    await expect(MyPromise.myAll([promiseA, promiseB])).rejects.toMatch('B failed!!!')
+    const promiseA = new Promise((res, rej) => {
+      setTimeout(() => rej(new Error('A failed!!!')), 1000)
+    }).catch(err => err)
+
+    await expect(MyPromise.myAll([promiseA, promiseB])).rejects.toMatch('A failed!!!')
+    await expect(MyPromise.myAll([promiseA, promiseB])).rejects.not.toMatch('B failed!!!')
+  })
+})
+
+describe('myRace()', () => {
+  test('only return first resolved promise', async () => {
+    const promiseA = new Promise((res, rej) => setTimeout(() => res('A'), 1000))
+    const promiseB = new Promise((res, rej) => setTimeout(() => res('B'))) // return first resolved
+
+    await expect(MyPromise.myRace([promiseA, promiseB])).resolves.toMatch('B')
   })
 })
 
 describe('myCatch()', () => {})
 
-describe('myRace()', () => {})
+describe('myRetryThreeTimes()', () => {})
