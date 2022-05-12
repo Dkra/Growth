@@ -108,4 +108,44 @@ test('sequence should be call A then B', done => {
   fn('A') // execute this first (sync code)
 })
 
-test('should chain', () => {})
+test('then funciton should be chainable', async () => {
+  await new Promise((res, rej) => {
+    res('A') // Sync code
+  })
+    .then(data => {
+      expect(data).toBe('A')
+      return 'B' // return value as [non-promise type]
+    })
+    .then(data => {
+      expect(data).toBe('B')
+    })
+
+  await new Promise((res, rej) => {
+    res('A') // Sync code
+  })
+    .then(data => {
+      expect(data).toBe('A')
+      return new Promise((res, rej) => {
+        // return value as [promise type]
+        setTimeout(() => {
+          res('Promise B')
+        }, 1000)
+      })
+    })
+    .then(data => {
+      expect(data).toBe('Promise B')
+    })
+
+  await new Promise((res, rej) => {
+    setTimeout(() => {
+      res('A') // Async code
+    }, 1000)
+  })
+    .then(data => {
+      expect(data).toBe('A')
+      return 'B' // return value as [non-promise type]
+    })
+    .then(data => {
+      expect(data).toBe('B')
+    })
+})

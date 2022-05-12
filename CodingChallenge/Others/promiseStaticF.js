@@ -30,7 +30,6 @@ const myRace = value => {
   if (!Array.isArray(value)) throw new Error('Parameter should be array type')
   let isResolved = false
   return new Promise((res, rej) => {
-    const result = []
     for (let i = 0; i < value.length; i++) {
       value[i].then(data => {
         if (isResolved) return // return directly if already has failed promise resolved

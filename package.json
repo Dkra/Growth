@@ -29,9 +29,11 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "husky": "^7.0.4",
     "jest": "^28.1.0",
     "lodash": "^4.17.21",
     "prettier": "^2.6.2"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1"
   }
 }

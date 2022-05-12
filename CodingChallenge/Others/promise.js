@@ -7,8 +7,8 @@ function MyPromise(executor) {
   this.status = 'pending'
   this.value = null
   this.reason = null
-  this.onFullfilled = Function.prototype
-  this.onRejected = Function.prototype
+  this.onFullfilledArr = []
+  this.onRejectedArr = []
 
   function resolve(value) {
     // Mock async micro task
@@ -18,7 +18,7 @@ function MyPromise(executor) {
         _self.value = value
         _self.status = 'fullfilled'
 
-        _self.onFullfilled(value)
+        _self.onFullfilledArr.forEach(func => func(value))
       }
     })
   }
@@ -31,7 +31,7 @@ function MyPromise(executor) {
         _self.reason = reason
         _self.status = 'rejected'
 
-        _self.onRejected(reason)
+        _self.onRejectedArr.forEach(func => func(reason))
       }
     })
   }
@@ -39,6 +39,8 @@ function MyPromise(executor) {
   executor(resolve, reject)
 }
 
+// 1. execute onFullfilled & onRejected
+// 2. wrap executed return value in a new Promise
 MyPromise.prototype.then = function(onFullfilled, onRejected) {
   // Set default Succes & Fail func
   onFullfilled = typeof onFullfilled === 'function' ? onFullfilled : data => onFullfilled(data)
@@ -48,18 +50,34 @@ MyPromise.prototype.then = function(onFullfilled, onRejected) {
       : err => {
           throw err
         }
+
+  let result
   // for [sync] case
   if (this.status === 'fullfilled') {
-    onFullfilled(this.value)
+    return new Promise((res, rej) => {
+      try {
+        result = onFullfilled(this.value)
+        res(result)
+      } catch (error) {
+        rej(error)
+      }
+    })
   }
   if (this.status === 'rejected') {
-    onRejected(this.reason)
+    return new Promise((res, rej) => {
+      try {
+        result = onRejected(this.reason)
+        res(result)
+      } catch (error) {
+        rej(error)
+      }
+    })
   }
 
   // for [async] case
   if (this.status === 'pending') {
-    this.onFullfilled = onFullfilled
-    this.onRejected = onRejected
+    this.onFullfilledArr.push(onFullfilled)
+    this.onRejectedArr.push(onRejected)
   }
 }
 
